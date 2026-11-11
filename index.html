@@ -1,4 +1,38 @@
+html
 ---
-layout: home
-# Index page
+layout: default
+title: My GitHub Blog
 ---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ page.title }}</title>
+</head>
+<body>
+
+    <header>
+        <h1>Welcome to My Blog</h1>
+    </header>
+
+    <main>
+        <h2>Recent Posts</h2>
+        <ul>
+            <!-- This loop automatically fetches and lists your markdown blog posts -->
+            {% for post in site.posts %}
+                <li>
+                    <span class="post-date">{{ post.date | date: "%b %d, %Y" }}</span>
+                    <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+                </li>
+            {% endfor %}
+        </ul>
+    </main>
+
+    <footer>
+        <p>&copy; {{ site.time | date: "%Y" }} My Name</p>
+    </footer>
+
+</body>
+</html>
